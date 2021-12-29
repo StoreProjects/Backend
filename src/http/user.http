@@ -1,0 +1,25 @@
+@api = http://localhost:4001
+POST {{ api }}/api/users/signup
+Content-Type: application/json
+
+{
+    "name"        : "Jairo",
+    "lastname"    : "Zorrilla",
+    "phone"       : 123456789,
+    "image"       : "http://pm1.narvii.com/6350/119e892acea9bc0748f3c62c9f0eb3cdadd754ac_00.jpg",
+    "mail"        : "jairo@gmail.com",
+    "password"    : "123456"
+}
+
+###
+
+POST {{ api }}/api/users/signin
+Content-Type: application/json
+
+{
+    "mail"        : "jairo@gmail.com",
+    "password"    : "123456"
+}
+
+###
+
