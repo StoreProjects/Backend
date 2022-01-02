@@ -1,9 +1,10 @@
 import { Router } from 'express';
 import { getProducts, createProduct, getProduct } from '../../controllers/product/product.controller';
+import { TokenValidation } from '../../libs/verifyToken';
 const router = Router();
 
 router.route('/')
-    .get(getProducts)
+    .get(TokenValidation, getProducts)
     .post(createProduct);
 
 router.route('/:id')

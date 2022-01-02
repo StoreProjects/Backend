@@ -1,6 +1,7 @@
 @api = http://localhost:4001
 GET {{ api }}/api/products/
 
+
 ###
 
 POST {{ api }}/api/products/
