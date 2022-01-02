@@ -9,6 +9,7 @@ interface IUser extends Document {
     image: string;
     mail: string;
     password: string;
+    isAdmin: boolean;
     encrypPassword(password: string): Promise<string>;
     validatePassword(password: string): Promise<boolean>;
 }

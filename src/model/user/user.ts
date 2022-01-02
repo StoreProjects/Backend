@@ -9,6 +9,7 @@ const userSchema = new Schema({
     image       : String,
     mail        : String,
     password    : String,
+    isAdmin     : {type: Boolean, required: true, default: false},
 }, {
     timestamps: true
 });
