@@ -51,48 +51,23 @@ export const signup: RequestHandler = async ( req, res) => {
 
 export const signin: RequestHandler = async ( req, res ) => {
 
-    // const user = await User.findOne({ mail: req.body.mail });
+    const user = await User.findOne({ email: req.body.mail });
 
-    // if( !user ) {
-    //     return res.status(401).send({ msg: 'User not found' });
-    // }
+    if( !user ) {
+        return res.status(401).send({ msg: 'User not found' });
+    }
 
-    // const match = await user.validatePassword(req.body.password);
+    const match = await user.validatePassword(req.body.password);
 
-    // if( !match ) {
-    //     return res.status(401).send({ msg: 'Incorrect password' });
-    // }
+    if( !match ) {
+        return res.status(401).send({ msg: 'Incorrect password' });
+    }
 
-    // const token = generateToken( user );
+    const token = generateToken( user );
 
-    // res.send({
-    //     ...user._doc,
-    //     token
-    // })
-
-    User.findOne({'email': req.body.mail}, function(err: string, user: IUser){
-        if( !user ) {
-            return res.status(400).send({
-                ok:false,
-                err:{
-                    message:'Usuario no válido'
-                }
-            })
-        }
-        if(!bcrypt.compareSync(req.body.password, user.password)) {
-            return res.status(400).send({
-                ok:false,
-                err:{
-                    message:'Clave no válida'
-                }
-            })
-        }
-        const token = generateToken( user );
-        res.send({
-            ok: true,
-            usuariodb: user,
-            token
-        });
-    });
+    res.send({
+        ...user._doc,
+        token
+    })
 
 }
