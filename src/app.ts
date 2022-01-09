@@ -7,6 +7,7 @@ import morgan from 'morgan';
 
 import productRoute from './routes/product-router/product';
 import userRoute from './routes/user-router/user';
+import orderRoute from './routes/order-router/order';
 
 const app = express();
 
@@ -20,5 +21,6 @@ app.set('port', config.PORT);
 // ROUTES
 app.use('/api/products', productRoute);
 app.use('/api/users', userRoute);
+app.use('/api/order', orderRoute);
 
 export default app;

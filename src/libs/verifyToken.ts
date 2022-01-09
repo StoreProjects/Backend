@@ -6,7 +6,7 @@ export interface IPayload {
     _id: string;
 }
 
-export const TokenValidation = (req: Request, res: Response, next: NextFunction) => {
+export const TokenValidation = ( req: Request, res: Response, next: NextFunction ) => {
     try {
         const token = req.get('token');
         if (!token) return res.status(401).json('Access Denied');
