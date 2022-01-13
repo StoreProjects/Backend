@@ -3,6 +3,7 @@ dotenv.config();
 
 export default {
     MONGODB_DATABASE: process.env.MONGO_DATABASE || 'shopping',
+    MONGODB_ATLAS_URL: process.env.MONGO_ATLAS_URL,
     MONGO_USER: process.env.MONGO_USER || 'admin',
     MONGO_PASSWORD: process.env.MONGO_PASSWORD || 'admin',
     MONGO_HOST: process.env.MONGO_HOST || 'localhost',

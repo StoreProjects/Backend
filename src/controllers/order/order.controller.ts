@@ -1,6 +1,18 @@
 import { RequestHandler } from 'express';
 import Order from '../../model/order/order';
 
+export const getOrder: RequestHandler = async ( req, res ) => {
+
+    const order = await Order.findById(req.params.id);
+
+    if ( order ) {
+        res.send(order);
+    } else {
+        res.status(404).send({ message: 'Order Not Found' });
+    }
+
+}
+
 export const createOrder: RequestHandler = async ( req, res ) => {
     try {
         if ( req.body.orderItems.length === 0 ) {

@@ -6,7 +6,7 @@ const productSchema = new Schema({
     description: String,
     category: String,
     brand: String,
-    price: Schema.Types.Decimal128,
+    price: Number,
     image: String,
     stock: Number
 }, {

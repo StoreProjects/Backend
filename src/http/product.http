@@ -8,11 +8,11 @@ POST {{ api }}/api/products/
 Content-Type: application/json
 
 {
-    "name"          : "CM_PUNK Mejor en el mundo lucha libre camiseta",
-    "description"   : "CM Punk Best In The World Wrestling T Shirt está preencogida y prelavada. Utilizamos camisetas 100% algodón. Ofrecemos una serie de diferentes estilos y colores! ¡Pídanos más detalles! Todas nuestras camisas están hechas a medida para ti, y fabricadas en Norteamérica. Asegúrate de que este producto viene de THREADSQUAD, todas las demás camisas son imitaciones.",
+    "name"          : "John Cena T-Shirt Green-Version",
+    "description"   : "John Cena WWE Cenation Respect Official Authentic T-Shirt",
     "category"      : "t-shirt",
     "brand"         : "wwe",
-    "price"         : 17.99,
-    "image"         : "cm_punk.jpg",
-    "stock"         : 15
+    "price"         : 19.99,
+    "image"         : "john_cena_2014_shirt.jpg",
+    "stock"         : 20
 }
