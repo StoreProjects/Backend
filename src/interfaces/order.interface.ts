@@ -16,10 +16,18 @@ interface ShippingAddress {
     country     : string;
 }
 
+interface PaymentResult {
+    id              : string;
+    status          : string;
+    update_time     : string;
+    email_address   : string;
+}
+
 interface IOrder extends Document {
     orderItems          : OrderItem[];
     shippingAddress     : ShippingAddress;
     paymentMethod       : string;
+    paymentResult       : PaymentResult;
     itemsPrice          : number;
     shippingPrice       : number;
     taxPrice            : number;
