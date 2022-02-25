@@ -1,6 +1,8 @@
 import app from './app';
 import './database/database';
 
-app.listen(app.get('port'), () => {
-    console.log('Server on port', app.get('port'));
+const port = process.env.PORT || 4001;
+
+app.listen(4001, () => {
+    console.log(`Server at http:localhost:${ port }`)
 });

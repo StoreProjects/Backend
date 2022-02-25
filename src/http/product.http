@@ -16,3 +16,6 @@ Content-Type: application/json
     "image"         : "john_cena_2014_shirt.jpg",
     "stock"         : 20
 }
+
+###
+GET {{ api }}/api/stripe

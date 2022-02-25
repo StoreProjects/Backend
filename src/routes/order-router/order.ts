@@ -1,7 +1,11 @@
 import { Router } from 'express';
-import { createOrder, getOrder, updateOrder } from '../../controllers/order/order.controller';
+import { createOrder, getOrder, updateOrder, listOrderMine } from '../../controllers/order/order.controller';
 import { TokenValidation } from '../../libs/verifyToken';
+import { updateOrderStripe } from '../../controllers/stripe/stripe.controller';
 const router = Router();
+
+router.route( '/mine' )
+    .get( TokenValidation, listOrderMine );
 
 router.route( '/' )
     .post( TokenValidation, createOrder );
@@ -11,5 +15,8 @@ router.route( '/:id' )
 
 router.route( '/:id/pay' )
     .put( TokenValidation, updateOrder );
+
+router.route( '/:id/stripe' )
+    .put( TokenValidation, updateOrderStripe );
 
 export default router;

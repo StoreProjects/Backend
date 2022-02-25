@@ -62,3 +62,10 @@ export const updateOrder: RequestHandler = async ( req, res ) => {
     }
 
 }
+
+export const listOrderMine: RequestHandler = async ( req, res ) => {
+
+    const orders = await Order.find();
+    res.send(orders);
+
+}

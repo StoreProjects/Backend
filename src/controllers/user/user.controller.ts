@@ -1,5 +1,4 @@
 import { RequestHandler } from 'express';
-import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 import config from '../../config';
@@ -38,36 +37,50 @@ export const signup: RequestHandler = async ( req, res) => {
         
         const token = generateToken( savedUser );
 
-        res.send({
+        res.json({
             ...savedUser._doc,
             token
         });
 
     } catch (error) {
-        res.status(401).send(error);
+        res.status(401).json(error);
     }
 
 }
 
 export const signin: RequestHandler = async ( req, res ) => {
 
-    const user = await User.findOne({ email: req.body.mail });
+    const user = await User.findOne({ mail: req.body.email });
 
     if( !user ) {
-        return res.status(401).send({ msg: 'User not found' });
+        return res.status(401).json({ msgUser: 'User not found' });
+    } else {
+
+        const match = await user.validatePassword(req.body.password);
+
+        if( !match ) {
+            return res.status(401).json({ msgPass: 'Incorrect password' });
+        }
+
+        const token = generateToken( user );
+
+        res.json({
+            ...user._doc,
+            token
+        });
+
+    }
+    
+}
+
+export const getUser: RequestHandler = async ( req, res ) => {
+
+    const user = await User.findById(req.userId);
+
+    if ( !user ) {
+        res.status(401).send({ message: 'Usuario no encontrado' })
     }
 
-    const match = await user.validatePassword(req.body.password);
-
-    if( !match ) {
-        return res.status(401).send({ msg: 'Incorrect password' });
-    }
-
-    const token = generateToken( user );
-
-    res.send({
-        ...user._doc,
-        token
-    })
+    res.status(201).send(user);
 
 }
