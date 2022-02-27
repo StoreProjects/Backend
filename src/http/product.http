@@ -19,3 +19,14 @@ Content-Type: application/json
 
 ###
 GET {{ api }}/api/stripe
+
+###
+POST {{ api }}/api/products/comment/61cc905ba73a7bced5334fa2
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxY2E2OGQxODBjYjA2ZjZmODQ0ZTY5NSIsImxhc3RuYW1lIjoiSmFpcm8iLCJwaG9uZSI6MTIzNDU2Nzg5LCJpbWFnZSI6Imh0dHA6Ly9wbTEubmFydmlpLmNvbS82MzUwLzExOWU4OTJhY2VhOWJjMDc0OGYzYzYyYzlmMGViM2NkYWRkNzU0YWNfMDAuanBnIiwibWFpbCI6ImphaXJvQGdtYWlsLmNvbSIsImlhdCI6MTY0NTkwNTkyNiwiZXhwIjoxNjQ1OTA5NTI2fQ.n8mkg7AUx861dhLG5k4w3WmdbPDelMzUnNcmRu0Rpek
+Content-Type: application/json
+
+{
+    "body": "Excelente producto",
+    "username" : "Jairo"
+}
+

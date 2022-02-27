@@ -13,9 +13,10 @@ interface IProduct extends Document {
 }
 
 interface Comment {
-    body        : string;
-    user        : string;
-    createdAt   : Date;
+    id             ?: string;
+    body            : string;
+    user            : string | String | ObjectId;
+    createdAt       : Date;
 }
 
 export { IProduct };

@@ -4,6 +4,7 @@ import config from '../config';
 
 export interface IPayload {
     id: string;
+    username: string;
     email: string;
 }
 
@@ -14,6 +15,7 @@ export const TokenValidation = ( req: Request, res: Response, next: NextFunction
         const payload = jwt.verify(token, config.SECRET_KEY || '') as IPayload;
         req.userId = payload.id;
         req.email = payload.email;
+        req.username = payload.username;
         next();
     } catch (e) {
         res.status(400).send('Invalid Token');

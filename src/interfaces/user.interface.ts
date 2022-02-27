@@ -5,6 +5,7 @@ interface IUser extends Document {
     id: ObjectId;
     name: string;
     lastname: string;
+    username: string;
     phone: string;
     image: string;
     mail: string;

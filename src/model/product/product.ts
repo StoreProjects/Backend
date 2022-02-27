@@ -12,7 +12,7 @@ const productSchema = new Schema({
     comments: [
         {
             body: String,
-            username: String,
+            user: { type: Schema.Types.ObjectId, ref: 'User' },
             createdAt: Date
         }
     ]

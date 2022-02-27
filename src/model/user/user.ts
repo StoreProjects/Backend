@@ -5,6 +5,7 @@ import bcrypt from 'bcryptjs';
 const userSchema = new Schema({
     name        : String,
     lastname    : String,
+    username    : String,
     phone       : Number,
     image       : String,
     mail        : String,

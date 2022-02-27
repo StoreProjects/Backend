@@ -1,5 +1,6 @@
 import { RequestHandler } from 'express';
 import Product from '../../model/product/product';
+import { IProduct } from '../../interfaces/product.interface';
 
 export const createProduct: RequestHandler = async ( req, res ) => {
 
@@ -37,7 +38,8 @@ export const getProducts: RequestHandler = async ( req, res ) => {
 
 export const getProduct: RequestHandler = async ( req, res) => {
 
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findById(req.params.id)
+        .populate("comments.user");
 
     if ( product ) {
         res.status(202).json( product );

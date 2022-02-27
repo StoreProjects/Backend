@@ -4,11 +4,13 @@ import jwt from 'jsonwebtoken';
 import config from '../../config';
 import { IUser } from '../../interfaces/user.interface';
 import User from '../../model/user/user';
+import { generateRandom } from '../../utils/generateNumber';
 
 function generateToken( user: IUser ): string {
     return jwt.sign({
         id: user.id,
         lastname: user.lastname,
+        username: user.username,
         phone: user.phone,
         image: user.image,
         mail: user.mail
@@ -22,11 +24,16 @@ export const signup: RequestHandler = async ( req, res) => {
     const emailExist = await User.findOne({ mail: req.body.mail });
     if ( emailExist ) return res.status(400).json({ message: 'Email already exists' });
 
+    const rand = generateRandom();
+
+    const username = `${req.body.name + '.' + req.body.lastname + '.' + rand}`;
+
     try {
         
         const newUser: IUser = new User({
             name: req.body.name,
-            lastname: req.body.name,
+            lastname: req.body.lastname,
+            username: username,
             phone: req.body.phone,
             image: req.body.image,
             mail: req.body.mail,
