@@ -13,7 +13,8 @@ const productSchema = new Schema({
         {
             body: String,
             user: { type: Schema.Types.ObjectId, ref: 'User' },
-            createdAt: Date
+            createdAt: Date,
+            rating: Number,
         }
     ]
 }, {

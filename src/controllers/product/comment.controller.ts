@@ -12,7 +12,8 @@ export const createComment: RequestHandler = async ( req, res ) => {
             product.comments?.unshift({
                 body: req.body.text,
                 user: req.userId,
-                createdAt: new Date()
+                rating: req.body.rating,
+                createdAt: new Date(),
             });
 
             await product.save();
@@ -64,3 +65,39 @@ export const deleteComment: RequestHandler = async( req, res ) => {
     }
 
 }
+
+// /* */
+
+// export const getComments:RequestHandler = async( req, res ) => {
+
+//     try {
+        
+//         return await Comment.find({'productId': req.params.productId});
+
+//     } catch ( err ) {
+//         res.status(401).send({msg: err});
+//     }
+
+// }
+
+// export const addComment:RequestHandler = async( req, res ) => {
+
+//     try {
+        
+//         const comment = new Comment({
+//             content: req.body.content,
+//             user: req.userId,
+//             createdAt: new Date(),
+//             rating: req.body.rating,
+//             productId: req.params.productId
+//         });
+
+//         const created = await comment.save();
+
+//         res.status(201).send(created);
+
+//     } catch ( err ) {
+//         res.status(401).send({msg: err});
+//     }
+
+// }

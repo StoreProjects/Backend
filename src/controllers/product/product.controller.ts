@@ -40,9 +40,9 @@ export const getProduct: RequestHandler = async ( req, res) => {
 
     const product = await Product.findById(req.params.id)
         .populate("comments.user");
-
+    
     if ( product ) {
-        res.status(202).json( product );
+        res.status(202).json(product);
     } else {
         res.status(202).json({
             message: 'There are not products yet'
