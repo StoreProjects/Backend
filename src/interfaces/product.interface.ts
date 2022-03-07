@@ -1,4 +1,5 @@
 import { Document, ObjectId } from 'mongoose';
+import { IUser } from './user.interface';
 
 interface IProduct extends Document {
     _doc        : [];
@@ -16,7 +17,7 @@ interface IProduct extends Document {
 interface Comment {
     id             ?: string;
     body            : string;
-    user            : string | String | ObjectId;
+    user            : string | String | ObjectId | IUser;
     rating          : number;
     createdAt       : Date;
 }

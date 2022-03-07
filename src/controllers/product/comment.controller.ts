@@ -6,7 +6,7 @@ export const createComment: RequestHandler = async ( req, res ) => {
     try {
         
         const product = await Product.findById(req.params.productId);
-
+        
         if ( product ) {
 
             product.comments?.unshift({
@@ -18,7 +18,10 @@ export const createComment: RequestHandler = async ( req, res ) => {
 
             await product.save();
 
-            res.status(201).send(product);
+            const productNew = await Product.findById(req.params.productId)
+                .populate("comments.user");
+            
+            res.status(201).send(productNew.comments![0]);
 
         } else {
             res.status(401).send({msg: 'Producto no encontrado'});
@@ -50,7 +53,7 @@ export const deleteComment: RequestHandler = async( req, res ) => {
 
                 await product.save();
 
-                res.status(201).send(product);
+                res.status(201).send('Deleted');
 
             }else {
                 res.status(401).send({msg: 'Action not allowed'});
