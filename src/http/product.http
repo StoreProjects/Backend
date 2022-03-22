@@ -8,14 +8,34 @@ POST {{ api }}/api/products/
 Content-Type: application/json
 
 {
-    "name"          : "John Cena T-Shirt Green-Version",
-    "description"   : "John Cena WWE Cenation Respect Official Authentic T-Shirt",
+    "name"          : "Jeff Hardy Enygma T-Shirt",
+    "description"   : "Jeff Hardy T-Shirt from WWE",
     "category"      : "t-shirt",
     "brand"         : "wwe",
-    "price"         : 19.99,
-    "image"         : "john_cena_2014_shirt.jpg",
-    "stock"         : 20
+    "price"         : 25.99,
+    "image"         : "jeff_hardy_1.jpg",
+    "stock"         : 15
 }
+
+# {
+#     "name"          : "CM PUNK T-Shirt wwe-version",
+#     "description"   : "CM Punk T-Shirt from WWE during his years in 2011",
+#     "category"      : "t-shirt",
+#     "brand"         : "wwe",
+#     "price"         : 21.99,
+#     "image"         : "cm_punk.jpg",
+#     "stock"         : 25
+# }
+
+# {
+#     "name"          : "John Cena T-Shirt Green-Version",
+#     "description"   : "John Cena WWE Cenation Respect Official Authentic T-Shirt",
+#     "category"      : "t-shirt",
+#     "brand"         : "wwe",
+#     "price"         : 19.99,
+#     "image"         : "john_cena_2014_shirt.jpg",
+#     "stock"         : 20
+# }
 
 ###
 GET {{ api }}/api/stripe
@@ -30,3 +50,6 @@ Content-Type: application/json
     "username" : "Jairo"
 }
 
+###
+
+GET {{ api }}/api/products/t-shirt/limit/1/highest
